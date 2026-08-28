@@ -1,0 +1,7 @@
+{
+  "name": "Setor Gmail Rewards",
+  "description": "Aplikasi setor akun Gmail berhadiah dengan sistem reward otomatis, verifikasi kilat, penarikan saldo e-wallet & bank, notifikasi audio, dan panel admin lengkap.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
