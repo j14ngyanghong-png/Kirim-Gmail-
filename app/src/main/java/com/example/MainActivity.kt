@@ -286,12 +286,12 @@ fun AppBottomNavigation(
         add(NavigationItem(ScreenTab.HOME, "Beranda", Icons.Filled.Home, Icons.Outlined.Home))
         add(NavigationItem(ScreenTab.DEPOSIT, "Setor Akun", Icons.Filled.AddCard, Icons.Outlined.AddCard))
         add(NavigationItem(ScreenTab.WITHDRAW, "Tarik", Icons.Filled.Payments, Icons.Outlined.Payments))
-        add(NavigationItem(ScreenTab.ANNOUNCEMENTS, "Info", Icons.Filled.Campaign, Icons.Outlined.Campaign))
         if (isAdmin) {
             add(NavigationItem(ScreenTab.ADMIN, "Admin", Icons.Filled.AdminPanelSettings, Icons.Outlined.AdminPanelSettings, badgeCount = pendingDepositCount))
         } else {
-            add(NavigationItem(ScreenTab.PROFILE, "Profil", Icons.Filled.Person, Icons.Outlined.Person))
+            add(NavigationItem(ScreenTab.ANNOUNCEMENTS, "Info", Icons.Filled.Campaign, Icons.Outlined.Campaign))
         }
+        add(NavigationItem(ScreenTab.PROFILE, "Profil", Icons.Filled.Person, Icons.Outlined.Person))
     }
 
     NavigationBar(

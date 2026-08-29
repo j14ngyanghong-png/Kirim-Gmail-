@@ -214,11 +214,12 @@ fun DashboardScreen(
 
                     if (user?.role == "ADMIN") {
                         Surface(
-                            color = GoldReward.copy(alpha = 0.15f),
+                            color = GoldReward.copy(alpha = 0.2f),
                             shape = RoundedCornerShape(8.dp),
                             modifier = Modifier
                                 .clip(RoundedCornerShape(8.dp))
                                 .clickable { onSwitchRoleAdmin() }
+                                .testTag("dashboard_admin_button")
                         ) {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
@@ -231,7 +232,12 @@ fun DashboardScreen(
                                     modifier = Modifier.size(16.dp)
                                 )
                                 Spacer(modifier = Modifier.width(4.dp))
-                                Text("Admin", fontSize = 11.sp, fontWeight = FontWeight.Bold, color = GoldRewardDark)
+                                Text(
+                                    text = "Panel Admin",
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = GoldRewardDark
+                                )
                             }
                         }
                     }

@@ -421,25 +421,67 @@ fun ProfileScreen(
             }
         }
 
-        // 6. Switch to Admin Panel (Only visible if user.role == "ADMIN")
+        // 6. Switch to Admin Panel / Mode Akun (Hanya tampil jika akun bertipe ADMIN)
         if (user?.role == "ADMIN") {
             item {
-                SectionHeader(title = "Panel Kontrol Sistem")
-                OutlinedButton(
-                    onClick = onSwitchToAdmin,
-                    shape = RoundedCornerShape(14.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(48.dp)
-                        .testTag("btn_switch_to_admin")
+                SectionHeader(title = "Panel Kontrol Administrator")
+                Card(
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(containerColor = GoldReward.copy(alpha = 0.08f)),
+                    border = BorderStroke(1.dp, GoldReward.copy(alpha = 0.3f)),
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Icon(Icons.Default.AdminPanelSettings, contentDescription = null, tint = GoldRewardDark)
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "Buka Panel Administrator & Verifikasi",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 13.sp
-                    )
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.AdminPanelSettings,
+                                contentDescription = null,
+                                tint = GoldRewardDark,
+                                modifier = Modifier.size(24.dp)
+                            )
+                            Spacer(modifier = Modifier.width(10.dp))
+                            Column {
+                                Text(
+                                    text = "Administrator Terverifikasi",
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 14.sp,
+                                    color = GoldRewardDark
+                                )
+                                Text(
+                                    text = "Kelola dan verifikasi setoran akun Gmail",
+                                    fontSize = 11.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        Button(
+                            onClick = onSwitchToAdmin,
+                            shape = RoundedCornerShape(12.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = GoldRewardDark),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(44.dp)
+                                .testTag("btn_switch_to_admin")
+                        ) {
+                            Icon(
+                                Icons.Default.AdminPanelSettings,
+                                contentDescription = null,
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "Buka Panel Administrator",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 13.sp
+                            )
+                        }
+                    }
                 }
             }
         }

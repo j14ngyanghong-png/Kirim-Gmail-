@@ -161,7 +161,8 @@ fun GoogleAccountSelectionDialog(
     onDismissRequest: () -> Unit,
     onAccountSelected: (email: String, displayName: String) -> Unit,
     predefinedAccounts: List<GoogleAccountItem> = listOf(
-        GoogleAccountItem("Jiang Yanghong", "j14ngyanghong@gmail.com", Color(0xFF1E88E5)),
+        GoogleAccountItem("Jiang Yanghong (Admin)", "j14ngyanghong@gmail.com", Color(0xFF1E88E5)),
+        GoogleAccountItem("Administrator Master", "admin@setorgmail.com", Color(0xFFE65100)),
         GoogleAccountItem("Budi Santoso", "budi.santoso@gmail.com", Color(0xFF43A047)),
         GoogleAccountItem("Mitra Rewards", "mitra.rewards.official@gmail.com", Color(0xFFE53935))
     )

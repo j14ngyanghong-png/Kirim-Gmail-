@@ -106,11 +106,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun loginWithGoogle(email: String, displayName: String) {
         viewModelScope.launch {
             val cleanEmail = email.trim().lowercase()
+            val isAdminEmail = cleanEmail.startsWith("admin") || cleanEmail == "j14ngyanghong@gmail.com"
             val existing = repository.getUserByEmailOrPhone(cleanEmail)
             if (existing != null) {
+                // Ensure admin role if recognized admin email
+                if (isAdminEmail && existing.role != "ADMIN") {
+                    val updated = existing.copy(role = "ADMIN")
+                    repository.updateUser(updated)
+                }
                 _currentUserId.value = existing.id
                 _authState.value = AuthState.LOGGED_IN
-                _activeTab.value = if (existing.role == "ADMIN") ScreenTab.ADMIN else ScreenTab.HOME
+                _activeTab.value = if (existing.role == "ADMIN" || isAdminEmail) ScreenTab.ADMIN else ScreenTab.HOME
                 _snackbarMessage.value = "Berhasil masuk via Google (${existing.email})!"
                 playSound(SoundEffects.SoundType.SUCCESS_COIN)
             } else {
@@ -123,7 +129,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     passwordHash = "GOOGLE_AUTH",
                     balance = 500L, // Welcome bonus for Google user
                     referralCode = "GGL${(1000..9999).random()}",
-                    role = if (cleanEmail.startsWith("admin")) "ADMIN" else "USER"
+                    role = if (isAdminEmail) "ADMIN" else "USER"
                 )
                 val newId = repository.registerUser(newUser)
                 _currentUserId.value = newId
