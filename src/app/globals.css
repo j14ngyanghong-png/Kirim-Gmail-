@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand */
+  --color-primary: #1e50ff;
+  --color-primary-dark: #0d256c;
+  --color-primary-light: #4d77ff;
+
+  --color-emerald: #00c853;
+  --color-emerald-dark: #009624;
+  --color-emerald-light: #5efc82;
+
+  --color-gold: #ffb300;
+  --color-gold-light: #ffd54f;
+  --color-gold-dark: #c68400;
+
+  --color-coral: #ff3366;
+  --color-coral-light: #ff6b8b;
+  --color-coral-dark: #c2185b;
+
+  --color-amber: #ff9100;
+  --color-amber-light: #ffbe3d;
+
+  /* Surfaces */
+  --color-background: #f6f8fd;
+  --color-surface: #ffffff;
+  --color-surface-variant: #edf2fb;
+  --color-card-border: #e2e8f0;
+
+  /* Text */
+  --color-ink: #0f172a;
+  --color-ink-secondary: #64748b;
+  --color-ink-tertiary: #94a3b8;
+}
+
+* {
+  border-color: var(--color-card-border);
+}
+
+html {
+  background-color: var(--color-background);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Hide scrollbars inside the phone frame for a native feel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 18s linear infinite;
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-pop-in {
+  animation: pop-in 0.28s ease-out both;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slide-up {
+  animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes toast-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-toast-in {
+  animation: toast-in 0.25s ease-out both;
+}
